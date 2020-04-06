@@ -5,6 +5,7 @@ import { Search } from '../../components/Search'
 import FAIcon from '../../components/FAIcon'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 import { Spacing } from '../../ui'
+import { ScreenView } from '../../components/ScreenView'
 
 
 function EmptyResultList () {
@@ -20,7 +21,7 @@ function EmptyResultList () {
 
 export default function DiscoverScreen () {
   return (
-    <View>
+    <ScreenView>
       <Search></Search>
       <EmptyResultList></EmptyResultList>
       {/* <BookTileWithButton author="Jim Jones" title="book by jim jones"></BookTileWithButton>
@@ -28,16 +29,16 @@ export default function DiscoverScreen () {
       <BookTileWithButton author="Jim Jones" title="book by jim jones"></BookTileWithButton>
       <BookTileWithButton author="Jim Jones" title="book by jim jones"></BookTileWithButton>
       <BookTileWithButton author="Jim Jones" title="book by jim jones"></BookTileWithButton> */}
-    </View>
+    </ScreenView>
   )
 }
 
 const styles = StyleSheet.create({
   empty: {
-    // flex: 1,
-    height: '75%',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: -Spacing.large
   },
   emptyContent: {
     color: '#aaa',
