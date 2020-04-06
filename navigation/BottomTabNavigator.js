@@ -7,7 +7,7 @@ import BookListScreen from '../features/booklist/BooklistScreen';
 import ProfileScreen from '../features/profile/ProfileScreen'
 
 const BottomTab = createBottomTabNavigator();
-const INITIAL_ROUTE_NAME = 'Book List';
+const INITIAL_ROUTE_NAME = 'Discover';
 
 export default function BottomTabNavigator ({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
@@ -49,9 +49,11 @@ function getHeaderTitle (route) {
   const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
 
   switch (routeName) {
-    case 'Home':
-      return 'How to get started';
-    case 'Links':
-      return 'Links to learn more';
+    case 'Discover':
+      return 'Discover';
+    case 'Profile':
+      return 'Profile';
+    case 'Book List':
+      return "My Book List"
   }
 }

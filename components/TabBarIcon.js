@@ -1,7 +1,7 @@
 import * as React from 'react';
 import FAIcon from './FAIcon'
 
-import Colors from '../constants/Colors';
+import { Colors } from '../ui';
 
 export default function TabBarIcon (props) {
   return (

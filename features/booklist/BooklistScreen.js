@@ -1,10 +1,23 @@
 import * as React from 'react'
-import { View, Text } from 'react-native'
+import { ScrollView, StyleSheet } from 'react-native'
+import { BookTile } from '../../components/BookTile'
+import { H3 } from '../../ui/typography'
+import { Spacing } from '../../ui'
 
 export default function BookListScreen () {
   return (
-    <View>
-      <Text>Book List Screen</Text>
-    </View>
+    <ScrollView>
+      <H3 style={styles.header}>Reading</H3>
+      <BookTile title="Book Title One" author="Jim Goodman"></BookTile>
+      <H3 style={styles.header}>Coming Up</H3>
+      <BookTile title="A Long Book Title (or, in other words, trying to make the text break)" author="Billy Jones"></BookTile>
+      <BookTile title="Book Title Three" author="Frederick Germaine"></BookTile>
+    </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  header: {
+    margin: Spacing.small
+  }
+})
