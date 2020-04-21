@@ -16,7 +16,7 @@ export function ListTileWithButton (props) {
     <View style={styles.tileGroup}>
       <ListTile>{props.children}</ListTile>
       <TouchableOpacity style={styles.button}>
-        <FAIcon icon="plus" color="black" size={24}></FAIcon>
+        <FAIcon icon="plus" color="black"></FAIcon>
       </TouchableOpacity>
     </View >
   )
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   tile: {
     backgroundColor: Colors.white,
     padding: Spacing.medium,
-    marginVertical: Spacing.small / 2,
+    marginTop: Spacing.small,
     marginHorizontal: Spacing.small,
     flexDirection: 'row',
     flex: 1

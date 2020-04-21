@@ -1,35 +1,62 @@
 import * as React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { BookTileWithButton } from '../../components/BookTile'
-import { Search } from '../../components/Search'
+import { Search } from '../../components/SearchBar'
 import FAIcon from '../../components/FAIcon'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
 import { Spacing } from '../../ui'
 import { ScreenView } from '../../components/ScreenView'
+import { connect, dispatch } from 'react-redux'
+import * as R from 'ramda'
 
+function displaySearchResults (results) {
+  return results
+}
 
-function EmptyResultList () {
-  const searched = false
-  const text = searched ? "Sorry, we didn't find anything for your search." : "Start searching for something new!"
+function mapStateToProps (state) {
+  return {
+    results: state.search.searchResults,
+    searched: state.search.searched
+  }
+}
+
+export default function DiscoverScreen ({ results }) {
   return (
-    <View style={styles.empty}>
-      <FAIcon icon="books" color={styles.emptyContent.color} size={50}></FAIcon>
-      <Text style={styles.emptyContent}>{text}</Text>
+    <ScreenView>
+      <Search></Search>
+      <SearchResults></SearchResults>
+    </ScreenView>
+  )
+}
+
+function ResultsList ({ results, searched }) {
+  console.log({ results, searched })
+  return (
+    <View style={{ flex: 1 }}>
+      {results.length === 0 ? (
+        <EmptyResultList searched={searched}></EmptyResultList>
+      ) : (
+        R.map(
+          ({ author, title, id }) => (
+            <BookTileWithButton key={id} author={author} title={title} />
+          ),
+          results
+        )
+      )}
     </View>
   )
 }
 
-export default function DiscoverScreen () {
+const SearchResults = connect(mapStateToProps)(ResultsList)
+
+function EmptyResultList ({ searched }) {
+  const text = searched
+    ? "Sorry, we didn't find anything for your search."
+    : 'Start searching for something new!'
   return (
-    <ScreenView>
-      <Search></Search>
-      <EmptyResultList></EmptyResultList>
-      {/* <BookTileWithButton author="Jim Jones" title="book by jim jones"></BookTileWithButton>
-      <BookTileWithButton author="Jim Jones" title="book by jim jones"></BookTileWithButton>
-      <BookTileWithButton author="Jim Jones" title="book by jim jones"></BookTileWithButton>
-      <BookTileWithButton author="Jim Jones" title="book by jim jones"></BookTileWithButton>
-      <BookTileWithButton author="Jim Jones" title="book by jim jones"></BookTileWithButton> */}
-    </ScreenView>
+    <View style={styles.empty}>
+      <FAIcon icon='books' color={styles.emptyContent.color} size={50}></FAIcon>
+      <Text style={styles.emptyContent}>{text}</Text>
+    </View>
   )
 }
 

@@ -1,10 +1,11 @@
 import * as React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, Button } from 'react-native'
 import { ListTile, ListTileWithButton } from './ListTile'
 import { H2, H3 } from '../ui/typography'
-import { Spacing } from '../ui'
+import { Spacing, Colors } from '../ui'
 import FAIcon from './FAIcon'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Menu } from 'react-native-paper'
 
 function Cover () {
   return (
@@ -27,15 +28,41 @@ function BookTileContents ({ author, title }) {
 }
 
 export function BookTile ({ author, title }) {
+  const [menuOpen, toggleMenu] = React.useState(false);
+
+  const EllipsisButton =
+    <TouchableOpacity style={styles.options} activeOpacity={0.3} onPress={() => toggleMenu(true)}>
+      <FAIcon icon="ellipsis-v"></FAIcon>
+    </TouchableOpacity>
+
   return (
     <ListTile>
       <BookTileContents author={author} title={title} />
-      <TouchableOpacity style={styles.options} activeOpacity={0.3}>
-        <FAIcon icon="ellipsis-v"></FAIcon>
-      </TouchableOpacity>
+      <Menu
+        visible={menuOpen}
+        onDismiss={() => toggleMenu(false)}
+        anchor={EllipsisButton}
+      >
+        <Menu.Item onPress={() => toggleMenu(false)} title="Stop Reading" />
+        <Menu.Item onPress={() => toggleMenu(false)} title="Start Reading" />
+        <Menu.Item onPress={() => toggleMenu(false)} title="Remove From List" />
+      </Menu>
     </ListTile>
   )
 }
+
+// function Menu () {
+//   return (
+//     <View>
+//       <View style={styles.menuBackground}></View>
+//       <View style={styles.optionsMenu} >
+//         <Button title="Item 1"></Button>
+//         <Button title="Longer Item 2"></Button>
+//         <Button title="Item 3"></Button>
+//       </View>
+//     </View>
+//   )
+// }
 
 export function BookTileWithButton (props) {
   return (
@@ -62,7 +89,8 @@ const styles = StyleSheet.create({
     paddingLeft: Spacing.small,
   },
   options: {
-    height: '100%',
-    justifyContent: 'center',
-  }
+    // height: '100%',
+    justifyContent: 'flex-start',
+    // padding: 5
+  },
 })

@@ -10,10 +10,16 @@ export default function BookListScreen () {
     <ScreenView>
       <ScrollView>
         <H3 style={styles.header}>Reading</H3>
-        <BookTile title="Book Title One" author="Jim Goodman"></BookTile>
+        <BookTile title='Book Title One'></BookTile>
         <H3 style={styles.header}>Coming Up</H3>
-        <BookTile title="A Long Book Title (or, in other words, trying to make the text break)" author="Billy Jones"></BookTile>
-        <BookTile title="Book Title Three" author="Frederick Germaine"></BookTile>
+        <BookTile
+          title='A Long Book Title (or, in other words, trying to make the text break)'
+          author='Billy Jones'
+        ></BookTile>
+        <BookTile
+          title='Book Title Three'
+          author='Frederick Germaine'
+        ></BookTile>
       </ScrollView>
     </ScreenView>
   )
