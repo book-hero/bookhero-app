@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
-import { BookTile } from '../../components/BookTile'
-import { H3 } from '../../ui/typography'
-import { Spacing } from '../../ui'
-import { ScreenView } from '../../components/ScreenView'
+import { BookTile } from '../components/BookTile'
+import { H3 } from '../ui/typography'
+import { Spacing } from '../ui'
+import { ScreenView } from '../components/ScreenView'
 
-export default function BookListScreen () {
+export default function BookList () {
   return (
     <ScreenView>
       <ScrollView>

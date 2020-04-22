@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { BookTileWithButton } from '../../components/BookTile'
-import { Search } from '../../components/SearchBar'
-import FAIcon from '../../components/FAIcon'
-import { Spacing } from '../../ui'
-import { ScreenView } from '../../components/ScreenView'
+import { BookTileWithButton } from '../components/BookTile'
+import { Search } from '../components/SearchBar'
+import FAIcon from '../components/FAIcon'
+import { Spacing } from '../ui'
+import { ScreenView } from '../components/ScreenView'
 import { connect, dispatch } from 'react-redux'
 import * as R from 'ramda'
 
@@ -19,7 +19,7 @@ function mapStateToProps (state) {
   }
 }
 
-export default function DiscoverScreen ({ results }) {
+export default function Discover ({ results }) {
   return (
     <ScreenView>
       <Search></Search>

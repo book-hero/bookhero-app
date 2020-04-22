@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
-import { Spacing, Colors, Buttons } from '../../ui'
-import { H2 } from '../../ui/typography'
-import { ScreenView } from '../../components/ScreenView'
-import { ProgressBar } from '../../components/ProgressBar'
-import FAIcon from '../../components/FAIcon'
+import { Spacing, Colors, Buttons } from '../ui'
+import { H2 } from '../ui/typography'
+import { ScreenView } from '../components/ScreenView'
+import { ProgressBar } from '../components/ProgressBar'
+import FAIcon from '../components/FAIcon'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import * as R from 'ramda'
 
 const indexedMap = R.addIndex(R.map)
 
-export default function ProfileScreen () {
+export default function Profile () {
   return (
     <ScreenView>
       <View style={styles.card}>
@@ -19,7 +19,7 @@ export default function ProfileScreen () {
         <LineSpacer></LineSpacer>
         <View style={{ alignItems: 'flex-start' }}>
           <H2>Other Stuff</H2>
-          <Button title="Finished Books"></Button>
+          <Button title='Finished Books'></Button>
         </View>
       </View>
     </ScreenView>
@@ -35,7 +35,7 @@ function Identity () {
         <Text style={styles.title}>The Wise</Text>
       </View>
       <TouchableOpacity>
-        <FAIcon icon="cog"></FAIcon>
+        <FAIcon icon='cog'></FAIcon>
       </TouchableOpacity>
     </View>
   )
@@ -44,7 +44,7 @@ function Identity () {
 function Avatar () {
   return (
     <View style={styles.avatar}>
-      <FAIcon icon="user-circle" size={100} />
+      <FAIcon icon='user-circle' size={100} />
     </View>
   )
 }
@@ -62,17 +62,19 @@ function Attributes () {
       xp: 5,
       requiredForLevel: 25,
       currentLevel: 2
-    }, {
+    },
+    {
       name: 'attribute 3',
       xp: 35,
       requiredForLevel: 50,
       currentLevel: 4
-    }, {
+    },
+    {
       name: 'attribute 4',
       xp: 13,
       requiredForLevel: 25,
       currentLevel: 2
-    },
+    }
   ]
   return (
     <View style={styles.attributes}>
@@ -84,8 +86,11 @@ function Attributes () {
             name={attribute.name}
             currentLevel={attribute.currentLevel}
             xp={attribute.xp}
-            requiredForLevel={attribute.requiredForLevel} />),
-        attributes)}
+            requiredForLevel={attribute.requiredForLevel}
+          />
+        ),
+        attributes
+      )}
     </View>
   )
 }
@@ -97,15 +102,25 @@ function Attribute (props) {
         <Text>{props.name}</Text>
         <Text>Lvl {props.currentLevel}</Text>
       </View>
-      <ProgressBar progress={props.xp / props.requiredForLevel * 100}></ProgressBar>
+      <ProgressBar
+        progress={(props.xp / props.requiredForLevel) * 100}
+      ></ProgressBar>
     </View>
   )
 }
 
 function LineSpacer () {
-  return <View style={{ width: '100%', borderColor: '#ccc', borderWidth: 1, marginVertical: Spacing.large }}></View>
+  return (
+    <View
+      style={{
+        width: '100%',
+        borderColor: '#ccc',
+        borderWidth: 1,
+        marginVertical: Spacing.large
+      }}
+    ></View>
+  )
 }
-
 
 const styles = StyleSheet.create({
   card: {
@@ -115,7 +130,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white
   },
   identity: {
-    flexDirection: 'row',
+    flexDirection: 'row'
     // alignItems: 'center'
   },
   name: {

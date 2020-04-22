@@ -4,7 +4,7 @@ import { TextInput, StyleSheet, View, TouchableOpacity } from 'react-native'
 import { Colors, Spacing } from '../ui'
 import FAIcon from './FAIcon'
 import { connect } from 'react-redux'
-import { performSearch } from '../features/discover/actions'
+import { performSearch } from '../store/search/actions'
 
 function SearchInput ({ onChange, onSubmit }) {
   return (

@@ -2,9 +2,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import * as React from 'react'
 
 import TabBarIcon from '../components/TabBarIcon'
-import DiscoverScreen from '../features/discover/DiscoverScreen.js'
-import BookListScreen from '../features/booklist/BookListScreen'
-import ProfileScreen from '../features/profile/ProfileScreen'
+import DiscoverScreen from '../screens/Discover'
+import BookListScreen from '../screens/BookList'
+import ProfileScreen from '../screens/Profile'
 
 const BottomTab = createBottomTabNavigator()
 const INITIAL_ROUTE_NAME = 'Discover'

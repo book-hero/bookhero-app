@@ -1,4 +1,4 @@
 import { createStore, combineReducers } from 'redux'
-import { search } from './features/discover/reducer'
+import { search } from './search/reducer'
 
 export const store = createStore(combineReducers({ search }))
