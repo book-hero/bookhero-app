@@ -8,11 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Menu } from 'react-native-paper'
 
 function Cover () {
-  return (
-    <View style={styles.cover}>
-
-    </View>
-  )
+  return <View style={styles.cover}></View>
 }
 
 function BookTileContents ({ author, title }) {
@@ -28,12 +24,17 @@ function BookTileContents ({ author, title }) {
 }
 
 export function BookTile ({ author, title }) {
-  const [menuOpen, toggleMenu] = React.useState(false);
+  const [menuOpen, toggleMenu] = React.useState(false)
 
-  const EllipsisButton =
-    <TouchableOpacity style={styles.options} activeOpacity={0.3} onPress={() => toggleMenu(true)}>
-      <FAIcon icon="ellipsis-v"></FAIcon>
+  const EllipsisButton = (
+    <TouchableOpacity
+      style={styles.options}
+      activeOpacity={0.3}
+      onPress={() => toggleMenu(true)}
+    >
+      <FAIcon icon='ellipsis-v'></FAIcon>
     </TouchableOpacity>
+  )
 
   return (
     <ListTile>
@@ -43,26 +44,13 @@ export function BookTile ({ author, title }) {
         onDismiss={() => toggleMenu(false)}
         anchor={EllipsisButton}
       >
-        <Menu.Item onPress={() => toggleMenu(false)} title="Stop Reading" />
-        <Menu.Item onPress={() => toggleMenu(false)} title="Start Reading" />
-        <Menu.Item onPress={() => toggleMenu(false)} title="Remove From List" />
+        <Menu.Item onPress={() => toggleMenu(false)} title='Stop Reading' />
+        <Menu.Item onPress={() => toggleMenu(false)} title='Start Reading' />
+        <Menu.Item onPress={() => toggleMenu(false)} title='Remove From List' />
       </Menu>
     </ListTile>
   )
 }
-
-// function Menu () {
-//   return (
-//     <View>
-//       <View style={styles.menuBackground}></View>
-//       <View style={styles.optionsMenu} >
-//         <Button title="Item 1"></Button>
-//         <Button title="Longer Item 2"></Button>
-//         <Button title="Item 3"></Button>
-//       </View>
-//     </View>
-//   )
-// }
 
 export function BookTileWithButton (props) {
   return (
@@ -71,7 +59,6 @@ export function BookTileWithButton (props) {
     </ListTileWithButton>
   )
 }
-
 
 const styles = StyleSheet.create({
   contents: {
@@ -86,11 +73,11 @@ const styles = StyleSheet.create({
   },
   info: {
     flex: 1,
-    paddingLeft: Spacing.small,
+    paddingLeft: Spacing.small
   },
   options: {
     // height: '100%',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start'
     // padding: 5
-  },
+  }
 })

@@ -29,7 +29,6 @@ export default function Discover ({ results }) {
 }
 
 function ResultsList ({ results, searched }) {
-  console.log({ results, searched })
   return (
     <View style={{ flex: 1 }}>
       {results.length === 0 ? (

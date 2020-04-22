@@ -4,11 +4,7 @@ import { Colors, Spacing } from '../ui'
 import FAIcon from './FAIcon'
 
 export function ListTile (props) {
-  return (
-    <View style={styles.tile}>
-      {props.children}
-    </View>
-  )
+  return <View style={styles.tile}>{props.children}</View>
 }
 
 export function ListTileWithButton (props) {
@@ -16,9 +12,9 @@ export function ListTileWithButton (props) {
     <View style={styles.tileGroup}>
       <ListTile>{props.children}</ListTile>
       <TouchableOpacity style={styles.button}>
-        <FAIcon icon="plus" color="black"></FAIcon>
+        <FAIcon icon='plus' color='black'></FAIcon>
       </TouchableOpacity>
-    </View >
+    </View>
   )
 }
 
@@ -26,7 +22,7 @@ const styles = StyleSheet.create({
   tile: {
     backgroundColor: Colors.white,
     padding: Spacing.medium,
-    marginTop: Spacing.small,
+    marginVertical: Spacing.small / 2,
     marginHorizontal: Spacing.small,
     flexDirection: 'row',
     flex: 1
@@ -40,6 +36,6 @@ const styles = StyleSheet.create({
     marginLeft: -Spacing.small,
     marginRight: Spacing.small,
     justifyContent: 'center',
-    padding: Spacing.medium,
+    padding: Spacing.medium
   }
 })
