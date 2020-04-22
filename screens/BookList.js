@@ -4,10 +4,26 @@ import { BookTile } from '../components/BookTile'
 import { H3 } from '../ui/typography'
 import { Spacing } from '../ui'
 import { ScreenView } from '../components/ScreenView'
+import { BookListResults } from '../components/redux/BookListResults'
 
-export default function BookList () {
+export default function BookListScreen () {
   return (
     <ScreenView>
+      <BookListResults
+        emptyText='Look for smoething new'
+        displayResult={book => (
+          <BookTile
+            key={book.id}
+            title={book.title}
+            author={book.author}
+          ></BookTile>
+        )}
+      ></BookListResults>
+    </ScreenView>
+  )
+}
+
+/*
       <ScrollView>
         <H3 style={styles.header}>Reading</H3>
         <BookTile title='Book Title One'></BookTile>
@@ -21,9 +37,7 @@ export default function BookList () {
           author='Frederick Germaine'
         ></BookTile>
       </ScrollView>
-    </ScreenView>
-  )
-}
+ */
 
 const styles = StyleSheet.create({
   header: {

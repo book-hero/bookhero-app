@@ -11,7 +11,7 @@ export function ListTileWithButton (props) {
   return (
     <View style={styles.tileGroup}>
       <ListTile>{props.children}</ListTile>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={props.onButtonPress}>
         <FAIcon icon='plus' color='black'></FAIcon>
       </TouchableOpacity>
     </View>

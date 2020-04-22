@@ -16,19 +16,22 @@ export function search (state = initialState, action) {
             cover: null,
             author: 'Brandon Sanderson',
             title: 'The Way of Kings',
-            id: 1
+            id: 1,
+            reading: false
           },
           {
             cover: null,
             author: 'Brandon Sanderson',
             title: 'Words of Radiance',
-            id: 2
+            id: 2,
+            reading: false
           },
           {
             cover: null,
             author: 'Brandon Sanderson',
             title: 'Oathbringer',
-            id: 3
+            id: 3,
+            reading: false
           }
         ]
       }

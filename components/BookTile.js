@@ -52,10 +52,10 @@ export function BookTile ({ author, title }) {
   )
 }
 
-export function BookTileWithButton (props) {
+export function BookTileWithButton ({ onButtonPress, book }) {
   return (
-    <ListTileWithButton>
-      <BookTileContents author={props.author} title={props.title} />
+    <ListTileWithButton onButtonPress={() => onButtonPress(book)}>
+      <BookTileContents author={book.author} title={book.title} />
     </ListTileWithButton>
   )
 }

@@ -50,9 +50,6 @@ function mapDispatchToProps (dispatch) {
     }
   }
 }
-// const mapDispatchToProps = {
-//   onSearch: performSearch
-// }
 
 const styles = StyleSheet.create({
   search: {
