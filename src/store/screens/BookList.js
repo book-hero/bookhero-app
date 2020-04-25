@@ -1,28 +1,37 @@
 import * as React from 'react'
+import * as R from 'ramda'
 import { ScrollView, StyleSheet } from 'react-native'
-import { BookTile } from '../components/BookTile'
-import { H3 } from '../ui/typography'
-import { Spacing } from '../ui'
-import { ScreenView } from '../components/ScreenView'
-import { BookListResults } from '../components/redux/BookListResults'
+import { BookTile } from '../../components/BookTile'
+import { H3 } from '../../ui/typography'
+import { Spacing } from '../../ui'
+import { ScreenView } from '../../components/ScreenView'
+import { BookListResults } from '../../components/redux/BookListResults'
 
-export default function BookListScreen () {
+const filterBy = ({ prop, val }) => R.filter(R.propEq(prop, val))
+
+export default function BookList () {
   return (
     <ScreenView>
       <BookListResults
-        emptyText='Look for smoething new'
-        displayResult={book => (
-          <BookTile
-            key={book.id}
-            title={book.title}
-            author={book.author}
-          ></BookTile>
-        )}
+        emptyText='Go find some new books to read!'
+        display={results => <DisplayBooks results={results} />}
       ></BookListResults>
     </ScreenView>
   )
 }
 
+function DisplayBooks ({ results }) {
+  return R.map(
+    book => (
+      <BookTile
+        key={book.id}
+        title={book.title}
+        author={book.author}
+      ></BookTile>
+    ),
+    filterBy(s)
+  )
+}
 /*
       <ScrollView>
         <H3 style={styles.header}>Reading</H3>

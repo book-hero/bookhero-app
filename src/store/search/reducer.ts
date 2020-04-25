@@ -1,6 +1,12 @@
 import { PERFORM_SEARCH } from './actions'
+import { Book } from 'models/Book'
 
-const initialState = {
+interface SearchState {
+  searched: boolean
+  searchResults: Book[]
+}
+
+const initialState: SearchState = {
   searched: false,
   searchResults: []
 }

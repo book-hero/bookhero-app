@@ -1,4 +1,6 @@
 import * as React from 'react'
+import * as R from 'ramda'
+import { indexedMap } from 'libs/helpers'
 import { Text, View, StyleSheet, Button } from 'react-native'
 import { ListTile, ListTileWithButton } from './ListTile'
 import { H2, H3 } from '../ui/typography'
@@ -23,7 +25,7 @@ function BookTileContents ({ author, title }) {
   )
 }
 
-export function BookTile ({ author, title }) {
+export function BookTile ({ book, menuItems }) {
   const [menuOpen, toggleMenu] = React.useState(false)
 
   const EllipsisButton = (
@@ -38,16 +40,28 @@ export function BookTile ({ author, title }) {
 
   return (
     <ListTile>
-      <BookTileContents author={author} title={title} />
-      <Menu
-        visible={menuOpen}
-        onDismiss={() => toggleMenu(false)}
-        anchor={EllipsisButton}
-      >
-        <Menu.Item onPress={() => toggleMenu(false)} title='Stop Reading' />
-        <Menu.Item onPress={() => toggleMenu(false)} title='Start Reading' />
-        <Menu.Item onPress={() => toggleMenu(false)} title='Remove From List' />
-      </Menu>
+      <BookTileContents author={book.author} title={book.title} />
+      {menuItems ? (
+        <Menu
+          visible={menuOpen}
+          onDismiss={() => toggleMenu(false)}
+          anchor={EllipsisButton}
+        >
+          {indexedMap(({ action, title }, i) => {
+            console.log({ title })
+            return (
+              <Menu.Item
+                key={i}
+                onPress={() => {
+                  action(book)
+                  toggleMenu(false)
+                }}
+                title={title}
+              />
+            )
+          }, menuItems)}
+        </Menu>
+      ) : null}
     </ListTile>
   )
 }

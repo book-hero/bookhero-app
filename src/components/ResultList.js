@@ -2,15 +2,15 @@ import * as React from 'react'
 import * as R from 'ramda'
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import { Spacing } from '../ui'
-import FAIcon from '../components/FAIcon'
+import FAIcon from './FAIcon'
 
-export function ResultList ({ results, emptyText, displayResult }) {
+export function ResultList ({ results, emptyText, display }) {
   return (
     <View style={{ flex: 1 }}>
       {results.length === 0 ? (
         <EmptyResultList text={emptyText}></EmptyResultList>
       ) : (
-        <ScrollView>{R.map(displayResult, results)}</ScrollView>
+        <ScrollView>{display(results)}</ScrollView>
       )}
     </View>
   )

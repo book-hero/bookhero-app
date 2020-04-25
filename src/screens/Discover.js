@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
+import * as R from 'ramda'
 import { Search } from '../components/SearchBar'
 import { ScreenView } from '../components/ScreenView'
 import { SearchResults } from '../components/redux/SearchResults'
-import { BookTileWithButton } from '../components/BookTile'
 import { SearchResultTile } from '../components/redux/SearchResultTile'
 
 export default function Discover ({ results }) {
@@ -11,7 +10,9 @@ export default function Discover ({ results }) {
     <ScreenView>
       <Search></Search>
       <SearchResults
-        displayResult={book => <SearchResultTile key={book.id} book={book} />}
+        display={results =>
+          R.map(book => <SearchResultTile key={book.id} book={book} />, results)
+        }
       ></SearchResults>
     </ScreenView>
   )

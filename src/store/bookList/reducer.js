@@ -18,7 +18,6 @@ function setBookReadingStatusTo (isReading, bookList, id) {
 export function bookList (state = initialState, action) {
   switch (action.type) {
     case ADD_TO_BOOK_LIST:
-      console.log(action)
       return [...state, action.book]
     case REMOVE_FROM_BOOK_LIST:
       return R.pipe(

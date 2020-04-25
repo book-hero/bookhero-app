@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { registerRootComponent } from 'expo'
 import { Platform, StatusBar, StyleSheet, View } from 'react-native'
 import { SplashScreen } from 'expo'
 import * as Font from 'expo-font'
@@ -17,7 +18,7 @@ const Stack = createStackNavigator()
 
 FontAwesome.init()
 
-export default function App (props) {
+function App (props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false)
   const [initialNavigationState, setInitialNavigationState] = React.useState()
   const containerRef = React.useRef()
@@ -34,7 +35,7 @@ export default function App (props) {
 
         // Load fonts
         await Font.loadAsync({
-          'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')
+          'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf')
         })
       } catch (e) {
         // We might want to provide this error information to an error reporting service
@@ -77,3 +78,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   }
 })
+
+export default registerRootComponent(App)

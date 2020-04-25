@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { ResultList } from '../../components/ResultList'
+import { ResultList } from '../ResultList'
 
 function mapStateToProps (state) {
   return {
