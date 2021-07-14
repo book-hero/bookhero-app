@@ -8,8 +8,6 @@ import { BookListResults } from 'components/redux/BookListResults'
 import { H3 } from 'ui/typography'
 import { ActionableBookTile } from 'components/redux/ActionableBookTile'
 
-const filterBy = prop => R.filter(R.propEq(prop))
-
 export default function BookList () {
   return (
     <ScreenView>

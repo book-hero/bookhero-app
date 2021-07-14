@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as R from 'ramda'
 import { indexedMap } from 'libs/helpers'
-import { Text, View, StyleSheet, Button } from 'react-native'
+import { Text, View, StyleSheet, Button, Modal } from 'react-native'
 import { ListTile, ListTileWithButton } from './ListTile'
 import { H2, H3 } from '../ui/typography'
 import { Spacing, Colors } from '../ui'
@@ -38,6 +38,21 @@ export function BookTile ({ book, menuItems }) {
     </TouchableOpacity>
   )
 
+  function displayMenuItems (menuItems, book) {
+    return indexedMap(({ action, title, show }, i) => {
+      return show(book) ? (
+        <Menu.Item
+          key={i}
+          onPress={() => {
+            action(book)
+            toggleMenu(false)
+          }}
+          title={title}
+        />
+      ) : null
+    }, menuItems)
+  }
+
   return (
     <ListTile>
       <BookTileContents author={book.author} title={book.title} />
@@ -47,19 +62,7 @@ export function BookTile ({ book, menuItems }) {
           onDismiss={() => toggleMenu(false)}
           anchor={EllipsisButton}
         >
-          {indexedMap(({ action, title }, i) => {
-            console.log({ title })
-            return (
-              <Menu.Item
-                key={i}
-                onPress={() => {
-                  action(book)
-                  toggleMenu(false)
-                }}
-                title={title}
-              />
-            )
-          }, menuItems)}
+          {displayMenuItems(menuItems, book)}
         </Menu>
       ) : null}
     </ListTile>
@@ -71,6 +74,16 @@ export function BookTileWithButton ({ onButtonPress, book }) {
     <ListTileWithButton onButtonPress={() => onButtonPress(book)}>
       <BookTileContents author={book.author} title={book.title} />
     </ListTileWithButton>
+  )
+}
+
+function openModal () {
+  return (
+    <Modal>
+      <View style={{ backgroundColor: 'white' }}>
+        <Text>Hello World</Text>
+      </View>
+    </Modal>
   )
 }
 
@@ -90,8 +103,7 @@ const styles = StyleSheet.create({
     paddingLeft: Spacing.small
   },
   options: {
-    // height: '100%',
     justifyContent: 'flex-start'
-    // padding: 5
   }
+  // From example
 })

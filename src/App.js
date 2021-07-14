@@ -14,7 +14,7 @@ import useLinking from './navigation/useLinking'
 
 import FontAwesome from './libs/font-awesome'
 
-const Stack = createStackNavigator()
+const MainStack = createStackNavigator()
 
 FontAwesome.init()
 
@@ -61,9 +61,12 @@ function App (props) {
               ref={containerRef}
               initialState={initialNavigationState}
             >
-              <Stack.Navigator>
-                <Stack.Screen name='Screen' component={BottomTabNavigator} />
-              </Stack.Navigator>
+              <MainStack.Navigator>
+                <MainStack.Screen
+                  name='Screen'
+                  component={BottomTabNavigator}
+                />
+              </MainStack.Navigator>
             </NavigationContainer>
           </View>
         </PaperProvider>
